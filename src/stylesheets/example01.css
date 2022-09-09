@@ -1,0 +1,151 @@
+:root {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+*,
+::before,
+::after {
+    box-sizing: inherit;
+    /*sizes typing*/
+}
+
+body {
+    margin: 0;
+}
+
+header {
+    font-size: 2rem;
+    /*means it is two rems bigger than the :root font size*/
+    padding: 0 1rem;
+    height: 100px;
+    line-height: 100px;
+    /*do height and line-height the same- will center word in the middle*/
+    background-color: lightgray;
+}
+
+footer {
+    font-size: 1.5rem;
+    /*means it is two rems bigger than the :root font size*/
+    text-align: center;
+    height: 60px;
+    line-height: 60px;
+    /*do height and line-height the same- will center word in the middle*/
+    background-color: lightgray;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+#main-container {
+    height: calc(100vh-160px);
+    /*viewpoint height then minus 60 for footer and 100 header*/
+    display: table;
+    width: 100vw;
+    /*does viewport width 100 is 100%*/
+}
+
+#main-col {
+    display: table-cell;
+    background-color: rgb(188, 220, 241)
+}
+
+#main-container .box {
+    height: 100px;
+    line-height: 100px;
+    background-color: rgb(1, 57, 61);
+    text-align: center;
+    color: white;
+    margin: 1rem 1rem 0 1rem;
+}
+
+#main-container [selected] {
+    color: darkblue;
+    background: rgb(255, 255, 255);
+}
+
+#main-container [type="Featured"] {
+    border: 3px solid white;
+    background-color: black;
+}
+
+#aside-col {
+    display: none;
+}
+
+ul.links {
+    list-style: none;
+    padding: 1rem;
+}
+
+ul.links>li {
+    color: black;
+    padding: .5rem;
+    background-color: beige;
+    margin-bottom: center;
+    text-align: center;
+}
+
+ul.links>li>a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul.links>li>a:link {
+    color: rgb(0, 2, 7);
+}
+
+ul.links>li>a:visited {
+    color: rgb(1, 57, 61);
+}
+
+ul.links>li>a:active {
+    color: orange;
+}
+
+ul.links>li>a:hover {
+    background-color: blue;
+}
+
+
+/*Medium Devices*/
+@media all and (min-width: 600px) {
+
+    /*will not trigger until after 600px*/
+    #main-col .box {
+        float: left;
+        margin: 1rem 0 0 1rem;
+        width: calc((100% - 3rem) / 2);
+    }
+}
+
+/* Large Devices */
+@media all and (min-width: 800px) {
+    #main-col {
+        width: 70%;
+    }
+
+    #main-container .box {
+        float: left;
+        margin: 1rem 0 0 1rem;
+
+    }
+
+    #main-col .box {
+        width: calc((100% - 4rem) / 3);
+    }
+
+    #aside-col {
+        display: table-cell;
+        background-color: lightblue;
+    }
+
+    #aside-col .box {
+        width: calc((100% - 3rem) / 2);
+        vertical-align: top;
+    }
+}
